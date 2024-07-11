@@ -52,9 +52,11 @@ namespace _2048WindowsFormsApp
                 var randomNumberLabel = random.Next(mapSize * mapSize);
                 var indexRow = randomNumberLabel / mapSize;
                 var indexColumn = randomNumberLabel % mapSize;
+                string[] numbersArray = { "2", "2", "2", "4" };
+                var randomIndex = random.Next(numbersArray.Length);
                 if (labelsMap[indexRow, indexColumn].Text == string.Empty)
                 {
-                    labelsMap[indexRow, indexColumn].Text = "2";
+                    labelsMap[indexRow, indexColumn].Text = numbersArray[randomIndex];
                 }
                 break;
             }
