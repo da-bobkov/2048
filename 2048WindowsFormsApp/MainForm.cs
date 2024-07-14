@@ -5,7 +5,6 @@ using System.Data;
 using System.Data.Common;
 using System.Drawing;
 using System.Linq;
-//using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -75,19 +74,33 @@ namespace _2048WindowsFormsApp
         }
         private void GenerateNumber()
         {
-            while (true)
+            bool notAllFull = false;
+            foreach (var label in labelsMap)
             {
-                var randomNumberLabel = random.Next(mapSize * mapSize);
-                var indexRow = randomNumberLabel / mapSize;
-                var indexColumn = randomNumberLabel % mapSize;
+                if (label.Text == string.Empty)
+                {
+                    notAllFull = true;
+                    break;
+                }
+            }
+            if (notAllFull)
+            {
+                List<Tuple<int, int>> tupleList = new List<Tuple<int, int>>();
+                for (int i = 0; i < mapSize; i++)
+                {
+                    for (int j = 0; j < mapSize; j++)
+                    {
+                        if (labelsMap[i, j].Text == string.Empty)
+                        {
+                            tupleList.Add(new Tuple<int, int>(i, j));
+                        }
+                    }
+                }
                 string[] numbersArray = { "2", "2", "2", "4" };
                 var randomIndex = random.Next(numbersArray.Length);
-                if (labelsMap[indexRow, indexColumn].Text == string.Empty)
-                {
-                    labelsMap[indexRow, indexColumn].Text = numbersArray[randomIndex];
-                    ChangeColor(labelsMap[indexRow, indexColumn]);
-                }
-                break;
+                var randomNumberLabel = random.Next(tupleList.Count);
+                var choosenTuple = tupleList[randomNumberLabel];
+                labelsMap[choosenTuple.Item1, choosenTuple.Item2].Text = numbersArray[randomIndex];
             }
         }
         private Label CreateLabel(int indexRaw, int indexColumn)
@@ -105,7 +118,6 @@ namespace _2048WindowsFormsApp
         }
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            CheckIfEmpty();
             if (e.KeyCode == Keys.Right)
             {
                 for (int i_row = 0; i_row < mapSize; i_row++)
@@ -321,6 +333,26 @@ namespace _2048WindowsFormsApp
             }
         }
 
+        private void CheckIfGameOver()
+        {
+            bool gameover = true;
+            for (int i = 0; i < mapSize - 1; i++)
+            {
+                for (int j = 0; j < mapSize - 1; j++)
+                {
+                    if (labelsMap[i, j].Text == labelsMap[i + 1, j].Text || labelsMap[i, j].Text == labelsMap[i, j + 1].Text)
+                    {
+                        gameover = false;
+                        break;
+                    }
+                }
+            }
+            if (gameover)
+            {
+                MessageBox.Show("Игра окончена!");
+            }
+        }
+
         public void ChangeColor(Label label)
         {
             if (label.Text == string.Empty)
@@ -346,27 +378,6 @@ namespace _2048WindowsFormsApp
             }
 
         }
-
-        private void CheckIfGameOver()
-        {
-            bool gameover = true;
-            for (int i = 1; i < mapSize - 1; i++)
-            {
-                for (int j = 1; j < mapSize - 1; j++)
-                {
-                    if (labelsMap[i, j].Text == labelsMap[i - 1, j].Text || labelsMap[i, j].Text == labelsMap[i, j - 1].Text || labelsMap[i, j].Text == labelsMap[i, j + 1].Text || labelsMap[i, j].Text == labelsMap[i + 1, j].Text)
-                    {
-                        gameover = false;
-                        break;
-                    }
-                }
-            }
-            if (gameover)
-            {
-                MessageBox.Show("Игра окончена!");
-            }
-        }
-
 
         private void перезапускToolStripMenuItem_Click(object sender, EventArgs e)
         {
