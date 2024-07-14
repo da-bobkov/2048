@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
+//using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 using ClassLibrary;
 
 namespace _2048WindowsFormsApp
@@ -82,6 +85,7 @@ namespace _2048WindowsFormsApp
                 if (labelsMap[indexRow, indexColumn].Text == string.Empty)
                 {
                     labelsMap[indexRow, indexColumn].Text = numbersArray[randomIndex];
+                    ChangeColor(labelsMap[indexRow, indexColumn]);
                 }
                 break;
             }
@@ -90,7 +94,7 @@ namespace _2048WindowsFormsApp
         {
             var label = new Label();
              
-            label.BackColor = SystemColors.ActiveCaption;
+            label.BackColor = Color.White;
             label.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(204)));
             label.Size = new Size(70, 70);
             label.TextAlign = ContentAlignment.MiddleCenter;
@@ -175,18 +179,18 @@ namespace _2048WindowsFormsApp
                     }
                 }
 
-                for (int i_rowIndex = 0; i_rowIndex < mapSize; i_rowIndex++)
+                for (int i_row = 0; i_row < mapSize; i_row++)
                 {
-                    for (int j_columnIndex = 0; j_columnIndex < mapSize; j_columnIndex++)
+                    for (int j_column = 0; j_column < mapSize; j_column++)
                     {
-                        if (labelsMap[i_rowIndex, j_columnIndex].Text == string.Empty)
+                        if (labelsMap[i_row, j_column].Text == string.Empty)
                         {
-                            for (int k_columnIndex = j_columnIndex + 1; k_columnIndex < mapSize; k_columnIndex++)
+                            for (int k_column = j_column + 1; k_column < mapSize; k_column++)
                             {
-                                if (labelsMap[i_rowIndex, k_columnIndex].Text != string.Empty)
+                                if (labelsMap[i_row, k_column].Text != string.Empty)
                                 {
-                                    labelsMap[i_rowIndex, j_columnIndex].Text = labelsMap[i_rowIndex, k_columnIndex].Text;
-                                    labelsMap[i_rowIndex, k_columnIndex].Text = string.Empty;
+                                    labelsMap[i_row, j_column].Text = labelsMap[i_row, k_column].Text;
+                                    labelsMap[i_row, k_column].Text = string.Empty;
                                     break;
                                 }
                             }
@@ -292,6 +296,11 @@ namespace _2048WindowsFormsApp
                 }
             }
             GenerateNumber();
+            foreach (Label label in  labelsMap)
+            {
+                ChangeColor(label);
+            }
+            CheckIfEmpty();
             ShowScore();
         }
         public void CheckIfEmpty()
@@ -301,6 +310,7 @@ namespace _2048WindowsFormsApp
             {
                 if (label.Text == string.Empty)
                 {
+                    label.BackColor = Color.White;
                     allempty = false;
                     break;
                 }
@@ -309,6 +319,32 @@ namespace _2048WindowsFormsApp
             {
                 CheckIfGameOver();
             }
+        }
+
+        public void ChangeColor(Label label)
+        {
+            if (label.Text == string.Empty)
+            {
+                label.BackColor = Color.White;
+            }
+            else
+            {
+                switch (Convert.ToInt32(label.Text))
+                {
+                    case 2: label.BackColor = Color.Linen; break;
+                    case 4: label.BackColor = Color.Bisque; break;
+                    case 8: label.BackColor = Color.LightSalmon; break;
+                    case 16: label.BackColor = Color.DarkSalmon; break;
+                    case 32: label.BackColor = Color.Salmon; break;
+                    case 64: label.BackColor = Color.Coral; break;
+                    case 128: label.BackColor = Color.Tomato; break;
+                    case 256: label.BackColor = Color.LightCoral; break;
+                    case 512: label.BackColor = Color.Firebrick; break;
+                    case 1024: label.BackColor = Color.Red; break;
+                    case 2048: label.BackColor = Color.DarkRed; break;
+                }
+            }
+
         }
 
         private void CheckIfGameOver()
@@ -390,6 +426,10 @@ namespace _2048WindowsFormsApp
             foreach (Label label in labelsMap)
             {
                 label.Text = string.Empty;
+            }
+            foreach (Label label in labelsMap)
+            {
+                ChangeColor(label);
             }
             GenerateNumber();
             bestScoreLabel.Text = UserResultsStorage.GetBestScore().ToString();
