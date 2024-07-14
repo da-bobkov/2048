@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClassLibrary;
 
 namespace _2048WindowsFormsApp
 {
@@ -14,6 +15,7 @@ namespace _2048WindowsFormsApp
     {
 
         private MainForm mainForm;
+        private ResultsTableForm resultsTableForm;
         public RulesForm(MainForm mainForm)
         {
             this.mainForm = mainForm;
@@ -35,6 +37,22 @@ namespace _2048WindowsFormsApp
             this.Hide();
             mainForm.Show();
             mainForm.Focus();
+        }
+
+        private void таблицаРезультатовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Hide();
+                resultsTableForm.Show();
+                resultsTableForm.Focus();
+            }
+            catch (Exception)
+            {
+                this.Hide();
+                resultsTableForm = new ResultsTableForm(mainForm);
+                resultsTableForm.ShowDialog();
+            }
         }
     }
 }

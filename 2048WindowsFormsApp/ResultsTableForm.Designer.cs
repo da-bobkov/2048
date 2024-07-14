@@ -1,6 +1,6 @@
 ﻿namespace _2048WindowsFormsApp
 {
-    partial class RulesForm
+    partial class ResultsTableForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RulesForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,8 +37,11 @@
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.правилаИгрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rulesTextBox = new System.Windows.Forms.RichTextBox();
+            this.resultsGridView = new System.Windows.Forms.DataGridView();
+            this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resultsGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -84,7 +86,6 @@
             this.таблицаРезультатовToolStripMenuItem.Name = "таблицаРезультатовToolStripMenuItem";
             this.таблицаРезультатовToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.таблицаРезультатовToolStripMenuItem.Text = "Таблица результатов";
-            this.таблицаРезультатовToolStripMenuItem.Click += new System.EventHandler(this.таблицаРезультатовToolStripMenuItem_Click);
             // 
             // перезапускToolStripMenuItem
             // 
@@ -113,28 +114,43 @@
             this.правилаИгрыToolStripMenuItem.Name = "правилаИгрыToolStripMenuItem";
             this.правилаИгрыToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.правилаИгрыToolStripMenuItem.Text = "Правила игры";
+            this.правилаИгрыToolStripMenuItem.Click += new System.EventHandler(this.правилаИгрыToolStripMenuItem_Click);
             // 
-            // rulesTextBox
+            // resultsGridView
             // 
-            this.rulesTextBox.Location = new System.Drawing.Point(13, 52);
-            this.rulesTextBox.Name = "rulesTextBox";
-            this.rulesTextBox.Size = new System.Drawing.Size(290, 340);
-            this.rulesTextBox.TabIndex = 9;
-            this.rulesTextBox.Text = resources.GetString("rulesTextBox.Text");
+            this.resultsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.resultsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameColumn,
+            this.resultColumn});
+            this.resultsGridView.Location = new System.Drawing.Point(13, 52);
+            this.resultsGridView.Name = "resultsGridView";
+            this.resultsGridView.Size = new System.Drawing.Size(290, 340);
+            this.resultsGridView.TabIndex = 9;
             // 
-            // RulesForm
+            // nameColumn
+            // 
+            this.nameColumn.HeaderText = "Имя";
+            this.nameColumn.Name = "nameColumn";
+            // 
+            // resultColumn
+            // 
+            this.resultColumn.HeaderText = "Результат";
+            this.resultColumn.Name = "resultColumn";
+            // 
+            // ResultsTableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(315, 404);
-            this.Controls.Add(this.rulesTextBox);
+            this.Controls.Add(this.resultsGridView);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.menuStrip2);
-            this.Name = "RulesForm";
+            this.Name = "ResultsTableForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "2048";
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resultsGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,12 +161,14 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem играToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem таблицаРезультатовToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem перезапускToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem правилаИгрыToolStripMenuItem;
-        private System.Windows.Forms.RichTextBox rulesTextBox;
-        private System.Windows.Forms.ToolStripMenuItem играToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem таблицаРезультатовToolStripMenuItem;
+        private System.Windows.Forms.DataGridView resultsGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resultColumn;
     }
 }

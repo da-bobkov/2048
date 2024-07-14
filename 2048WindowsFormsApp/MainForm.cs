@@ -7,16 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClassLibrary;
 
 namespace _2048WindowsFormsApp
 {
     public partial class MainForm : Form
     {
-        private const int mapSize = 4;
+        private int mapSize;
         private Label[,] labelsMap;
         private static Random random = new Random();
         private int score = 0;
         RulesForm rulesForm;
+        ResultsTableForm resultsTableForm;
+        User user;
+
         public MainForm()
         {
             InitializeComponent();
@@ -24,8 +28,29 @@ namespace _2048WindowsFormsApp
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
+            user = new User(loginForm.userNameTextBox.Text);
+            mapSize = Convert.ToInt32(loginForm.chooseSizeBox.Text);
+            switch (mapSize)
+            {
+                case 4: this.Size = new System.Drawing.Size(331, 443);
+                    totalScoreBox.Location = new Point(145, 12); 
+                    bestScoreBox.Location = new Point(228, 12); 
+                    break;
+
+                case 6: this.Size = new System.Drawing.Size(486, 585);
+                    totalScoreBox.Location = new Point(287, 12);
+                    bestScoreBox.Location = new Point(381, 12);
+                    break; 
+                case 8: this.Size = new System.Drawing.Size(638, 740);
+                    totalScoreBox.Location = new Point(441, 12);
+                    bestScoreBox.Location = new Point(533, 12);
+                    break;
+            }
             InitMap();
             GenerateNumber();
+            bestScoreLabel.Text = UserResultsStorage.GetBestScore().ToString();
             ShowScore();
         }
         private void ShowScore()
@@ -76,6 +101,7 @@ namespace _2048WindowsFormsApp
         }
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
+            CheckIfEmpty();
             if (e.KeyCode == Keys.Right)
             {
                 for (int i_row = 0; i_row < mapSize; i_row++)
@@ -117,6 +143,7 @@ namespace _2048WindowsFormsApp
                                     labelsMap[i_row, k_column].Text = string.Empty;
                                     break;
                                 }
+
                             }
                         }
                     }
@@ -169,6 +196,7 @@ namespace _2048WindowsFormsApp
             }
             if (e.KeyCode == Keys.Up)
             {
+
                 for (int j_column = 0; j_column < mapSize; j_column++)
                 {
                     for (int i_row = 0; i_row < mapSize; i_row++)
@@ -244,7 +272,6 @@ namespace _2048WindowsFormsApp
                     }
                 }
 
-
                 for (int j_column = 0; j_column < mapSize; j_column++)
                 {
                     for (int i_row = mapSize - 1; i_row > -0; i_row--)
@@ -267,14 +294,57 @@ namespace _2048WindowsFormsApp
             GenerateNumber();
             ShowScore();
         }
+        public void CheckIfEmpty()
+        {
+            bool allempty = true;
+            foreach (Label label in labelsMap)
+            {
+                if (label.Text == string.Empty)
+                {
+                    allempty = false;
+                    break;
+                }
+            }
+            if (allempty)
+            {
+                CheckIfGameOver();
+            }
+        }
+
+        private void CheckIfGameOver()
+        {
+            bool gameover = true;
+            for (int i = 1; i < mapSize - 1; i++)
+            {
+                for (int j = 1; j < mapSize - 1; j++)
+                {
+                    if (labelsMap[i, j].Text == labelsMap[i - 1, j].Text || labelsMap[i, j].Text == labelsMap[i, j - 1].Text || labelsMap[i, j].Text == labelsMap[i, j + 1].Text || labelsMap[i, j].Text == labelsMap[i + 1, j].Text)
+                    {
+                        gameover = false;
+                        break;
+                    }
+                }
+            }
+            if (gameover)
+            {
+                MessageBox.Show("Игра окончена!");
+            }
+        }
+
 
         private void перезапускToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            user.FinalScore = score;
+            UserResultsStorage.SetScore(user);
+            bestScoreLabel.Text = UserResultsStorage.CompareBestScore(user.FinalScore);
             Application.Restart();
         }
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            user.FinalScore = score;
+            UserResultsStorage.SetScore(user);
+            bestScoreLabel.Text = UserResultsStorage.CompareBestScore(user.FinalScore);
             Application.Exit();
         }
 
@@ -294,9 +364,36 @@ namespace _2048WindowsFormsApp
             }
         }
 
-        private void играToolStripMenuItem_Click(object sender, EventArgs e)
+        private void таблицаРезультатовToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try
+            {
+                this.Hide();
+                resultsTableForm.Show();
+                resultsTableForm.Focus();
+            }
+            catch (Exception)
+            {
+                this.Hide();
+                resultsTableForm = new ResultsTableForm(this);
+                resultsTableForm.ShowDialog();
+            }
+        }
 
+        private void начатьЗановоToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            user.FinalScore = score;
+            UserResultsStorage.SetScore(user);
+            bestScoreLabel.Text = UserResultsStorage.CompareBestScore(user.FinalScore);
+            score = 0;
+            user.FinalScore = 0;
+            foreach (Label label in labelsMap)
+            {
+                label.Text = string.Empty;
+            }
+            GenerateNumber();
+            bestScoreLabel.Text = UserResultsStorage.GetBestScore().ToString();
+            ShowScore();
         }
     }
 }
