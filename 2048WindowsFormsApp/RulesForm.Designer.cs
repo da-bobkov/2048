@@ -46,7 +46,7 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 24);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(315, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(316, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -57,7 +57,7 @@
             this.помощьToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(315, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(316, 24);
             this.menuStrip2.TabIndex = 8;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -118,7 +118,7 @@
             // 
             this.rulesTextBox.Location = new System.Drawing.Point(13, 52);
             this.rulesTextBox.Name = "rulesTextBox";
-            this.rulesTextBox.Size = new System.Drawing.Size(290, 340);
+            this.rulesTextBox.Size = new System.Drawing.Size(290, 331);
             this.rulesTextBox.TabIndex = 9;
             this.rulesTextBox.Text = resources.GetString("rulesTextBox.Text");
             // 
@@ -126,10 +126,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(315, 404);
+            this.ClientSize = new System.Drawing.Size(316, 395);
             this.Controls.Add(this.rulesTextBox);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.menuStrip2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "RulesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "2048";

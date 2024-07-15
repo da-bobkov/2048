@@ -60,5 +60,15 @@ namespace _2048WindowsFormsApp
                 rulesForm.ShowDialog();
             }
         }
+
+        private void renewResultsButton_Click(object sender, EventArgs e)
+        {
+            resultsGridView.Rows.Clear();
+            Users = UserResultsStorage.GetAll();
+            foreach (User user in Users)
+            {
+                resultsGridView.Rows.Add(user.Name, user.FinalScore);
+            }
+        }
     }
 }

@@ -93,6 +93,7 @@
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(this.userNameLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "2048";

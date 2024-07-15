@@ -40,6 +40,7 @@
             this.resultsGridView = new System.Windows.Forms.DataGridView();
             this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.renewResultsButton = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultsGridView)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +49,7 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 24);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(315, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(316, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -59,7 +60,7 @@
             this.помощьToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(315, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(316, 24);
             this.menuStrip2.TabIndex = 8;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -124,7 +125,7 @@
             this.resultColumn});
             this.resultsGridView.Location = new System.Drawing.Point(13, 52);
             this.resultsGridView.Name = "resultsGridView";
-            this.resultsGridView.Size = new System.Drawing.Size(290, 340);
+            this.resultsGridView.Size = new System.Drawing.Size(290, 331);
             this.resultsGridView.TabIndex = 9;
             // 
             // nameColumn
@@ -137,14 +138,26 @@
             this.resultColumn.HeaderText = "Результат";
             this.resultColumn.Name = "resultColumn";
             // 
+            // renewResultsButton
+            // 
+            this.renewResultsButton.Location = new System.Drawing.Point(228, 23);
+            this.renewResultsButton.Name = "renewResultsButton";
+            this.renewResultsButton.Size = new System.Drawing.Size(75, 23);
+            this.renewResultsButton.TabIndex = 10;
+            this.renewResultsButton.Text = "Обновить";
+            this.renewResultsButton.UseVisualStyleBackColor = true;
+            this.renewResultsButton.Click += new System.EventHandler(this.renewResultsButton_Click);
+            // 
             // ResultsTableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(315, 404);
+            this.ClientSize = new System.Drawing.Size(316, 395);
+            this.Controls.Add(this.renewResultsButton);
             this.Controls.Add(this.resultsGridView);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.menuStrip2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ResultsTableForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "2048";
@@ -170,5 +183,6 @@
         private System.Windows.Forms.DataGridView resultsGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn resultColumn;
+        private System.Windows.Forms.Button renewResultsButton;
     }
 }
