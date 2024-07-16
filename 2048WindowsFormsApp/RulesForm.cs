@@ -54,5 +54,10 @@ namespace _2048WindowsFormsApp
                 resultsTableForm.ShowDialog();
             }
         }
+
+        private void RulesForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

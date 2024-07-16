@@ -70,5 +70,10 @@ namespace _2048WindowsFormsApp
                 resultsGridView.Rows.Add(user.Name, user.FinalScore);
             }
         }
+
+        private void ResultsTableForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

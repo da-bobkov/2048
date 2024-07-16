@@ -161,6 +161,7 @@
             this.Name = "ResultsTableForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "2048";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ResultsTableForm_FormClosing);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultsGridView)).EndInit();

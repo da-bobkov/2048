@@ -19,33 +19,36 @@ namespace _2048WindowsFormsApp
         private Label[,] labelsMap;
         private static Random random = new Random();
         private int score = 0;
+        private bool isResultAdded = false;
         RulesForm rulesForm;
         ResultsTableForm resultsTableForm;
         User user;
-        private bool isResultAdded = false;
-
         public MainForm()
         {
             InitializeComponent();
         }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
             LoginForm loginForm = new LoginForm();
             loginForm.ShowDialog();
             user = new User(loginForm.userNameTextBox.Text);
-            mapSize = Convert.ToInt32(loginForm.chooseSizeBox.Text);
-            switch (mapSize)
+            string choosenSize = loginForm.chooseSizeBox.Text;
+            if (choosenSize == string.Empty)
             {
-                case 4: this.Size = new System.Drawing.Size(332, 434);
+                choosenSize = "4";
+            }
+            mapSize = Convert.ToInt32(choosenSize);
+            switch (choosenSize)
+            {
+                case "4": this.Size = new System.Drawing.Size(332, 434);
                     totalScoreBox.Location = new Point(145, 12); 
                     bestScoreBox.Location = new Point(228, 12); 
                     break;
-                case 6: this.Size = new System.Drawing.Size(486, 585);
+                case "6": this.Size = new System.Drawing.Size(486, 585);
                     totalScoreBox.Location = new Point(287, 12);
                     bestScoreBox.Location = new Point(381, 12);
                     break; 
-                case 8: this.Size = new System.Drawing.Size(638, 740);
+                case "8": this.Size = new System.Drawing.Size(638, 740);
                     totalScoreBox.Location = new Point(441, 12);
                     bestScoreBox.Location = new Point(533, 12);
                     break;
@@ -72,6 +75,19 @@ namespace _2048WindowsFormsApp
                     labelsMap[i, j] = newLabel;
                 }
             }
+        }
+        private Label CreateLabel(int indexRaw, int indexColumn)
+        {
+            var label = new Label();
+
+            label.BackColor = Color.White;
+            label.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(204)));
+            label.Size = new Size(70, 70);
+            label.TextAlign = ContentAlignment.MiddleCenter;
+            int x = 10 + indexColumn * 76;
+            int y = 90 + indexRaw * 76;
+            label.Location = new Point(x, y);
+            return label;
         }
         private void GenerateNumber()
         {
@@ -104,18 +120,79 @@ namespace _2048WindowsFormsApp
                 labelsMap[choosenTuple.Item1, choosenTuple.Item2].Text = numbersArray[randomIndex];
             }
         }
-        private Label CreateLabel(int indexRaw, int indexColumn)
+        public void CheckIfEmpty()
         {
-            var label = new Label();
-             
-            label.BackColor = Color.White;
-            label.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(204)));
-            label.Size = new Size(70, 70);
-            label.TextAlign = ContentAlignment.MiddleCenter;
-            int x = 10 + indexColumn * 76;
-            int y = 90 + indexRaw * 76;
-            label.Location = new Point(x, y);
-            return label;
+            bool allempty = true;
+            foreach (Label label in labelsMap)
+            {
+                if (label.Text == string.Empty)
+                {
+                    label.BackColor = Color.White;
+                    allempty = false;
+                    break;
+                }
+            }
+            if (allempty)
+            {
+                CheckIfGameOver();
+            }
+        }
+        private void CheckIfGameOver()
+        {
+            bool gameover = true;
+            for (int i = 0; i < mapSize; i++)
+            {
+                for (int j = 0; j < mapSize; j++)
+                {
+                    if (i < mapSize - 1 && labelsMap[i, j].Text == labelsMap[i + 1, j].Text)
+                    {
+                        gameover = false;
+                        break;
+                    }
+                    if (j < mapSize - 1 && labelsMap[i, j].Text == labelsMap[i, j + 1].Text)
+                    {
+                        gameover = false;
+                        break;
+                    }
+                }
+            }
+            if (gameover)
+            {
+                if (isResultAdded == false)
+                {
+                    user.FinalScore = score;
+                    UserResultsStorage.SetScore(user);
+                    isResultAdded = true;
+                }
+                MessageBox.Show("Игра окончена!");
+            }
+        }
+        public void ChangeColor()
+        {
+            foreach (var label in labelsMap)
+            {
+                if (label.Text == string.Empty)
+                {
+                    label.BackColor = Color.White;
+                }
+                else
+                {
+                    switch (Convert.ToInt32(label.Text))
+                    {
+                        case 2: label.BackColor = Color.Linen; break;
+                        case 4: label.BackColor = Color.Bisque; break;
+                        case 8: label.BackColor = Color.LightSalmon; break;
+                        case 16: label.BackColor = Color.DarkSalmon; break;
+                        case 32: label.BackColor = Color.Salmon; break;
+                        case 64: label.BackColor = Color.Coral; break;
+                        case 128: label.BackColor = Color.Tomato; break;
+                        case 256: label.BackColor = Color.LightCoral; break;
+                        case 512: label.BackColor = Color.Firebrick; break;
+                        case 1024: label.BackColor = Color.Red; break;
+                        case 2048: label.BackColor = Color.DarkRed; break;
+                    }
+                }
+            }
         }
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
@@ -313,84 +390,6 @@ namespace _2048WindowsFormsApp
             CheckIfEmpty();
             ShowScore();
         }
-        public void CheckIfEmpty()
-        {
-            bool allempty = true;
-            foreach (Label label in labelsMap)
-            {
-                if (label.Text == string.Empty)
-                {
-                    label.BackColor = Color.White;
-                    allempty = false;
-                    break;
-                }
-            }
-            if (allempty)
-            {
-                CheckIfGameOver();
-            }
-        }
-
-        private void CheckIfGameOver()
-        {
-            bool gameover = true;
-            int mapSize = 4;
-            for (int i = 0; i < mapSize; i++)
-            {
-                for (int j = 0; j < mapSize; j++)
-                {
-                    if (i < mapSize - 1 && labelsMap[i, j].Text == labelsMap[i + 1, j].Text)
-                    {
-                        gameover = false;
-                        break;
-                    }
-                    if (j < mapSize - 1 && labelsMap[i, j].Text == labelsMap[i, j + 1].Text)
-                    {
-                        gameover = false;
-                        break;
-                    }
-                }
-            }
-            if (gameover)
-            {
-                if (isResultAdded == false)
-                {
-                    user.FinalScore = score;
-                    UserResultsStorage.SetScore(user);
-                    isResultAdded = true;
-                }
-                MessageBox.Show("Игра окончена!");
-            }
-        }
-
-        public void ChangeColor()
-        {
-            foreach (var label in labelsMap)
-            {
-                if (label.Text == string.Empty)
-                {
-                    label.BackColor = Color.White;
-                }
-                else
-                {
-                    switch (Convert.ToInt32(label.Text))
-                    {
-                        case 2: label.BackColor = Color.Linen; break;
-                        case 4: label.BackColor = Color.Bisque; break;
-                        case 8: label.BackColor = Color.LightSalmon; break;
-                        case 16: label.BackColor = Color.DarkSalmon; break;
-                        case 32: label.BackColor = Color.Salmon; break;
-                        case 64: label.BackColor = Color.Coral; break;
-                        case 128: label.BackColor = Color.Tomato; break;
-                        case 256: label.BackColor = Color.LightCoral; break;
-                        case 512: label.BackColor = Color.Firebrick; break;
-                        case 1024: label.BackColor = Color.Red; break;
-                        case 2048: label.BackColor = Color.DarkRed; break;
-                    }
-                }
-            }
-        }
-
         private void перезапускToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bestScoreLabel.Text = UserResultsStorage.CompareBestScore(user.FinalScore);
@@ -418,7 +417,6 @@ namespace _2048WindowsFormsApp
                 rulesForm.ShowDialog();
             }
         }
-
         private void таблицаРезультатовToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -450,6 +448,11 @@ namespace _2048WindowsFormsApp
             ChangeColor();
             bestScoreLabel.Text = UserResultsStorage.GetBestScore().ToString();
             ShowScore();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

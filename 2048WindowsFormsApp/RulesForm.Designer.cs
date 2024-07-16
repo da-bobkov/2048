@@ -134,6 +134,7 @@
             this.Name = "RulesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "2048";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RulesForm_FormClosing);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);

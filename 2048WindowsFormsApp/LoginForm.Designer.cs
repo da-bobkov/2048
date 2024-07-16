@@ -72,7 +72,6 @@
             this.chooseSizeBox.Name = "chooseSizeBox";
             this.chooseSizeBox.Size = new System.Drawing.Size(165, 21);
             this.chooseSizeBox.TabIndex = 3;
-            this.chooseSizeBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -87,13 +86,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(315, 404);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chooseSizeBox);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(this.userNameLabel);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "2048";
