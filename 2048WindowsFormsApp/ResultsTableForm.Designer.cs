@@ -38,9 +38,10 @@
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.правилаИгрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resultsGridView = new System.Windows.Forms.DataGridView();
+            this.renewResultsButton = new System.Windows.Forms.Button();
             this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.renewResultsButton = new System.Windows.Forms.Button();
+            this.mapSizeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultsGridView)).BeginInit();
             this.SuspendLayout();
@@ -122,21 +123,12 @@
             this.resultsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.resultsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameColumn,
-            this.resultColumn});
-            this.resultsGridView.Location = new System.Drawing.Point(13, 52);
+            this.resultColumn,
+            this.mapSizeColumn});
+            this.resultsGridView.Location = new System.Drawing.Point(12, 52);
             this.resultsGridView.Name = "resultsGridView";
-            this.resultsGridView.Size = new System.Drawing.Size(290, 331);
+            this.resultsGridView.Size = new System.Drawing.Size(292, 331);
             this.resultsGridView.TabIndex = 9;
-            // 
-            // nameColumn
-            // 
-            this.nameColumn.HeaderText = "Имя";
-            this.nameColumn.Name = "nameColumn";
-            // 
-            // resultColumn
-            // 
-            this.resultColumn.HeaderText = "Результат";
-            this.resultColumn.Name = "resultColumn";
             // 
             // renewResultsButton
             // 
@@ -147,6 +139,27 @@
             this.renewResultsButton.Text = "Обновить";
             this.renewResultsButton.UseVisualStyleBackColor = true;
             this.renewResultsButton.Click += new System.EventHandler(this.renewResultsButton_Click);
+            // 
+            // nameColumn
+            // 
+            this.nameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.nameColumn.HeaderText = "Имя";
+            this.nameColumn.Name = "nameColumn";
+            this.nameColumn.Width = 54;
+            // 
+            // resultColumn
+            // 
+            this.resultColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.resultColumn.HeaderText = "Размер карты";
+            this.resultColumn.Name = "resultColumn";
+            this.resultColumn.Width = 97;
+            // 
+            // mapSizeColumn
+            // 
+            this.mapSizeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.mapSizeColumn.HeaderText = "Результат";
+            this.mapSizeColumn.Name = "mapSizeColumn";
+            this.mapSizeColumn.Width = 84;
             // 
             // ResultsTableForm
             // 
@@ -161,7 +174,6 @@
             this.Name = "ResultsTableForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "2048";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ResultsTableForm_FormClosing);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultsGridView)).EndInit();
@@ -182,8 +194,9 @@
         private System.Windows.Forms.ToolStripMenuItem помощьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem правилаИгрыToolStripMenuItem;
         private System.Windows.Forms.DataGridView resultsGridView;
+        private System.Windows.Forms.Button renewResultsButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn resultColumn;
-        private System.Windows.Forms.Button renewResultsButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mapSizeColumn;
     }
 }

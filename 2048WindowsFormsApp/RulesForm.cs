@@ -55,9 +55,5 @@ namespace _2048WindowsFormsApp
             }
         }
 
-        private void RulesForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
     }
 }

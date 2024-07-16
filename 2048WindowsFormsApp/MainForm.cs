@@ -31,12 +31,12 @@ namespace _2048WindowsFormsApp
         {
             LoginForm loginForm = new LoginForm();
             loginForm.ShowDialog();
-            user = new User(loginForm.userNameTextBox.Text);
             string choosenSize = loginForm.chooseSizeBox.Text;
             if (choosenSize == string.Empty)
             {
                 choosenSize = "4";
             }
+            user = new User(loginForm.userNameTextBox.Text, choosenSize);
             mapSize = Convert.ToInt32(choosenSize);
             switch (choosenSize)
             {
@@ -450,9 +450,5 @@ namespace _2048WindowsFormsApp
             ShowScore();
         }
 
-        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
     }
 }

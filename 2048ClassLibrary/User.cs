@@ -10,10 +10,12 @@ namespace ClassLibrary
     {
         public string Name { get; set; }
         public int FinalScore { get; set; }
+        public string choosenMapSize { get; set; }
 
-        public User(string name)
+        public User(string name, string choosenmapsize)
         {
-            Name = name;        
+            Name = name;
+            choosenMapSize = choosenmapsize;
         }
     }
 }

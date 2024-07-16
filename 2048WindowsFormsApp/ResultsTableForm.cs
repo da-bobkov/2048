@@ -24,7 +24,7 @@ namespace _2048WindowsFormsApp
             Users = UserResultsStorage.GetAll();
             foreach (User user in Users)
             {
-                resultsGridView.Rows.Add(user.Name, user.FinalScore);
+                resultsGridView.Rows.Add(user.Name, user.choosenMapSize, user.FinalScore);
             }
         }
 
@@ -67,13 +67,8 @@ namespace _2048WindowsFormsApp
             Users = UserResultsStorage.GetAll();
             foreach (User user in Users)
             {
-                resultsGridView.Rows.Add(user.Name, user.FinalScore);
+                resultsGridView.Rows.Add(user.Name, user.choosenMapSize, user.FinalScore);
             }
-        }
-
-        private void ResultsTableForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
         }
     }
 }
