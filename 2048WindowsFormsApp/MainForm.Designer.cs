@@ -49,19 +49,19 @@
             this.правилаИгрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bestScoreNameLabel = new System.Windows.Forms.Label();
             this.bestScoreLabel = new System.Windows.Forms.Label();
-            this.totalScoreBox = new System.Windows.Forms.GroupBox();
-            this.bestScoreBox = new System.Windows.Forms.GroupBox();
+            this.totalScorePanel = new System.Windows.Forms.Panel();
+            this.bestScorePanel = new System.Windows.Forms.Panel();
             this.contextMenuStrip3.SuspendLayout();
             this.menuStrip2.SuspendLayout();
-            this.totalScoreBox.SuspendLayout();
-            this.bestScoreBox.SuspendLayout();
+            this.totalScorePanel.SuspendLayout();
+            this.bestScorePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // scoreNameLabel
             // 
             this.scoreNameLabel.AutoSize = true;
             this.scoreNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.scoreNameLabel.Location = new System.Drawing.Point(6, 16);
+            this.scoreNameLabel.Location = new System.Drawing.Point(6, 11);
             this.scoreNameLabel.Name = "scoreNameLabel";
             this.scoreNameLabel.Size = new System.Drawing.Size(68, 25);
             this.scoreNameLabel.TabIndex = 0;
@@ -71,7 +71,7 @@
             // 
             this.scoreLabel.AutoSize = true;
             this.scoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.scoreLabel.Location = new System.Drawing.Point(6, 41);
+            this.scoreLabel.Location = new System.Drawing.Point(6, 36);
             this.scoreLabel.Name = "scoreLabel";
             this.scoreLabel.Size = new System.Drawing.Size(24, 25);
             this.scoreLabel.TabIndex = 1;
@@ -79,9 +79,10 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.menuStrip1.Location = new System.Drawing.Point(0, 24);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(316, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(343, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -124,12 +125,13 @@
             // 
             // menuStrip2
             // 
+            this.menuStrip2.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.менюToolStripMenuItem,
             this.помощьToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(316, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(343, 24);
             this.menuStrip2.TabIndex = 6;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -198,7 +200,7 @@
             // 
             this.bestScoreNameLabel.AutoSize = true;
             this.bestScoreNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bestScoreNameLabel.Location = new System.Drawing.Point(6, 16);
+            this.bestScoreNameLabel.Location = new System.Drawing.Point(3, 11);
             this.bestScoreNameLabel.Name = "bestScoreNameLabel";
             this.bestScoreNameLabel.Size = new System.Drawing.Size(61, 25);
             this.bestScoreNameLabel.TabIndex = 7;
@@ -209,41 +211,40 @@
             // 
             this.bestScoreLabel.AutoSize = true;
             this.bestScoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bestScoreLabel.Location = new System.Drawing.Point(6, 41);
+            this.bestScoreLabel.Location = new System.Drawing.Point(3, 36);
             this.bestScoreLabel.Name = "bestScoreLabel";
             this.bestScoreLabel.Size = new System.Drawing.Size(24, 25);
             this.bestScoreLabel.TabIndex = 8;
             this.bestScoreLabel.Text = "0";
             // 
-            // totalScoreBox
+            // totalScorePanel
             // 
-            this.totalScoreBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.totalScoreBox.Controls.Add(this.scoreNameLabel);
-            this.totalScoreBox.Controls.Add(this.scoreLabel);
-            this.totalScoreBox.Location = new System.Drawing.Point(441, 12);
-            this.totalScoreBox.Name = "totalScoreBox";
-            this.totalScoreBox.Size = new System.Drawing.Size(77, 74);
-            this.totalScoreBox.TabIndex = 9;
-            this.totalScoreBox.TabStop = false;
+            this.totalScorePanel.BackColor = System.Drawing.Color.DarkKhaki;
+            this.totalScorePanel.Controls.Add(this.scoreLabel);
+            this.totalScorePanel.Controls.Add(this.scoreNameLabel);
+            this.totalScorePanel.Location = new System.Drawing.Point(158, 27);
+            this.totalScorePanel.Name = "totalScorePanel";
+            this.totalScorePanel.Size = new System.Drawing.Size(77, 71);
+            this.totalScorePanel.TabIndex = 12;
             // 
-            // bestScoreBox
+            // bestScorePanel
             // 
-            this.bestScoreBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.bestScoreBox.Controls.Add(this.bestScoreNameLabel);
-            this.bestScoreBox.Controls.Add(this.bestScoreLabel);
-            this.bestScoreBox.Location = new System.Drawing.Point(533, 12);
-            this.bestScoreBox.Name = "bestScoreBox";
-            this.bestScoreBox.Size = new System.Drawing.Size(77, 74);
-            this.bestScoreBox.TabIndex = 10;
-            this.bestScoreBox.TabStop = false;
+            this.bestScorePanel.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.bestScorePanel.Controls.Add(this.bestScoreLabel);
+            this.bestScorePanel.Controls.Add(this.bestScoreNameLabel);
+            this.bestScorePanel.Location = new System.Drawing.Point(254, 27);
+            this.bestScorePanel.Name = "bestScorePanel";
+            this.bestScorePanel.Size = new System.Drawing.Size(77, 71);
+            this.bestScorePanel.TabIndex = 14;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(316, 395);
-            this.Controls.Add(this.bestScoreBox);
-            this.Controls.Add(this.totalScoreBox);
+            this.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.ClientSize = new System.Drawing.Size(343, 395);
+            this.Controls.Add(this.totalScorePanel);
+            this.Controls.Add(this.bestScorePanel);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.menuStrip2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -256,10 +257,10 @@
             this.contextMenuStrip3.ResumeLayout(false);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
-            this.totalScoreBox.ResumeLayout(false);
-            this.totalScoreBox.PerformLayout();
-            this.bestScoreBox.ResumeLayout(false);
-            this.bestScoreBox.PerformLayout();
+            this.totalScorePanel.ResumeLayout(false);
+            this.totalScorePanel.PerformLayout();
+            this.bestScorePanel.ResumeLayout(false);
+            this.bestScorePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,10 +286,10 @@
         private System.Windows.Forms.ToolStripMenuItem играToolStripMenuItem;
         private System.Windows.Forms.Label bestScoreNameLabel;
         private System.Windows.Forms.Label bestScoreLabel;
-        private System.Windows.Forms.GroupBox totalScoreBox;
-        private System.Windows.Forms.GroupBox bestScoreBox;
         private System.Windows.Forms.ToolStripMenuItem таблицаРезультатовToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem начатьЗановоToolStripMenuItem;
+        private System.Windows.Forms.Panel totalScorePanel;
+        private System.Windows.Forms.Panel bestScorePanel;
     }
 }
 

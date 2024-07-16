@@ -10,8 +10,6 @@ namespace ClassLibrary
     {
 
         public static string PathToResults = "ResultsTable";
-        public static string PathToBestScore = "BestScore";
-
         public static List<User> GetAll()
         {
             if (!FileProvider.IsFileExists(PathToResults))
@@ -27,33 +25,24 @@ namespace ClassLibrary
         }
         public static int GetBestScore()
         {
-            if (!FileProvider.IsFileExists(PathToBestScore))
+            var allUsers = GetAll();
+            int maxResult = 0;
+            if (allUsers.Count == 0)
             {
                 return 0;
             }
             else
             {
-                string bestScoreToString = FileProvider.GetValue(PathToBestScore);
-                int bestScoreToInt = Converter.ConvertFromJson<int>(bestScoreToString);
-                return bestScoreToInt;
+                foreach (User user in allUsers)
+                {
+                    if(user.FinalScore > maxResult)
+                    {
+                        maxResult = user.FinalScore;    
+                    }
+                }
             }
-        }
-
-        public static string CompareBestScore(int score)
-        {
-            int currentBestScore = GetBestScore();
-            if (score > currentBestScore)
-            {
-                string scoreToJson = Converter.ConvertToJson(score);
-                FileProvider.SetValue(PathToBestScore, scoreToJson);
-                return score.ToString();
-            }
-            else
-            {
-                return currentBestScore.ToString();
-            }
-        }
-        
+            return maxResult;
+        }        
         public static void SetScore(User user)
         {
             List<User> users = GetAll();

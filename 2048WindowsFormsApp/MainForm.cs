@@ -41,16 +41,16 @@ namespace _2048WindowsFormsApp
             switch (choosenSize)
             {
                 case "4": this.Size = new System.Drawing.Size(332, 434);
-                    totalScoreBox.Location = new Point(145, 12); 
-                    bestScoreBox.Location = new Point(228, 12); 
+                    totalScorePanel.Location = new Point(145, 12); 
+                    bestScorePanel.Location = new Point(228, 12); 
                     break;
                 case "6": this.Size = new System.Drawing.Size(486, 585);
-                    totalScoreBox.Location = new Point(287, 12);
-                    bestScoreBox.Location = new Point(381, 12);
+                    totalScorePanel.Location = new Point(287, 12);
+                    bestScorePanel.Location = new Point(381, 12);
                     break; 
                 case "8": this.Size = new System.Drawing.Size(638, 740);
-                    totalScoreBox.Location = new Point(441, 12);
-                    bestScoreBox.Location = new Point(533, 12);
+                    totalScorePanel.Location = new Point(441, 12);
+                    bestScorePanel.Location = new Point(533, 12);
                     break;
             }
             InitMap();
@@ -392,13 +392,11 @@ namespace _2048WindowsFormsApp
         }
         private void перезапускToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bestScoreLabel.Text = UserResultsStorage.CompareBestScore(user.FinalScore);
             Application.Restart();
         }
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bestScoreLabel.Text = UserResultsStorage.CompareBestScore(user.FinalScore);
             Application.Exit();
         }
 
@@ -436,7 +434,7 @@ namespace _2048WindowsFormsApp
         private void начатьЗановоToolStripMenuItem_Click(object sender, EventArgs e)
         {
             user.FinalScore = score;
-            bestScoreLabel.Text = UserResultsStorage.CompareBestScore(user.FinalScore);
+            bestScoreLabel.Text = UserResultsStorage.GetBestScore().ToString();
             isResultAdded = false;
             score = 0;
             user.FinalScore = 0;
