@@ -247,7 +247,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(247)))), ((int)(((byte)(238)))));
-            this.ClientSize = new System.Drawing.Size(348, 645);
+            this.ClientSize = new System.Drawing.Size(348, 445);
             this.Controls.Add(this.totalScorePanel);
             this.Controls.Add(this.bestScorePanel);
             this.Controls.Add(this.menuStrip1);

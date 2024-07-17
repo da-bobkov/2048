@@ -19,7 +19,6 @@ namespace _2048WindowsFormsApp
         private Label[,] labelsMap;
         private static Random random = new Random();
         private int score = 0;
-        private bool isResultAdded = false;
         RulesForm rulesForm;
         ResultsTableForm resultsTableForm;
         User user;
@@ -124,49 +123,31 @@ namespace _2048WindowsFormsApp
                 labelsMap[choosenTuple.Item1, choosenTuple.Item2].Text = numbersArray[randomIndex];
             }
         }
-        public void CheckEmpty()
+        public bool GameOver()
         {
-            bool allempty = true;
             foreach (Label label in labelsMap)
             {
                 if (label.Text == string.Empty)
                 {
-                    label.BackColor = Color.FromArgb(203, 193, 181); 
-                    allempty = false;
-                    break;
+                    return false;
                 }
             }
-            if (allempty)
-            {
-                GameOver();
-            }
-        }
-        private void GameOver()
-        {
-            bool gameover = true;
             for (int i = 0; i < mapSize; i++)
             {
                 for (int j = 0; j < mapSize; j++)
                 {
                     if (i < mapSize - 1 && labelsMap[i, j].Text == labelsMap[i + 1, j].Text)
                     {
-                        gameover = false;
-                        break;
+                        return false;
                     }
                     if (j < mapSize - 1 && labelsMap[i, j].Text == labelsMap[i, j + 1].Text)
                     {
-                        gameover = false;
-                        break;
+                        return false;
                     }
                 }
             }
-            if (gameover)
-            {
-                AddResult();
-                MessageBox.Show("Вы проиграли! Игра окончена.");
-            }
+            return true;
         }
-
         private bool Win()
         {
             foreach (Label label in labelsMap)
@@ -180,12 +161,8 @@ namespace _2048WindowsFormsApp
         }
         public void AddResult()
         {
-            if (isResultAdded == false)
-            {
-                user.Score = score;
-                UserResultsStorage.SetScore(user);
-                isResultAdded = true;
-            }
+            user.Score = score;
+            UserResultsStorage.SetScore(user);
         }
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
@@ -195,6 +172,10 @@ namespace _2048WindowsFormsApp
                 return;
             }
             if (Win())
+            {
+                return;
+            }
+            if (GameOver())
             {
                 return;
             }
@@ -226,7 +207,12 @@ namespace _2048WindowsFormsApp
                 return;
             }
             GenerateNumber();
-            CheckEmpty();
+            if (GameOver())
+            {
+                AddResult();
+                MessageBox.Show("Вы проиграли. Игра окончена.");
+                return;
+            }
         }
 
         private void MoveDown()
@@ -462,7 +448,6 @@ namespace _2048WindowsFormsApp
         private void начатьЗановоToolStripMenuItem_Click(object sender, EventArgs e)
         {
             user.Score = score;
-            isResultAdded = false;
             score = 0;
             user.Score = 0;
             foreach (Label label in labelsMap)
