@@ -35,9 +35,9 @@ namespace ClassLibrary
             {
                 foreach (User user in allUsers)
                 {
-                    if(user.FinalScore > maxResult)
+                    if(user.Score > maxResult)
                     {
-                        maxResult = user.FinalScore;    
+                        maxResult = user.Score;    
                     }
                 }
             }

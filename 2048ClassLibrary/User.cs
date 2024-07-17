@@ -9,7 +9,7 @@ namespace ClassLibrary
     public class User
     {
         public string Name { get; set; }
-        public int FinalScore { get; set; }
+        public int Score { get; set; }
         public string choosenMapSize { get; set; }
 
         public User(string name, string choosenmapsize)

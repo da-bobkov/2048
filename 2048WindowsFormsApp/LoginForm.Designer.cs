@@ -65,9 +65,9 @@
             // 
             this.chooseSizeBox.FormattingEnabled = true;
             this.chooseSizeBox.Items.AddRange(new object[] {
-            "4",
-            "6",
-            "8"});
+            "4x4",
+            "6x6",
+            "8x8"});
             this.chooseSizeBox.Location = new System.Drawing.Point(69, 229);
             this.chooseSizeBox.Name = "chooseSizeBox";
             this.chooseSizeBox.Size = new System.Drawing.Size(165, 21);
@@ -85,6 +85,7 @@
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.BackColor = System.Drawing.Color.FromArgb(251, 247, 238);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(315, 404);

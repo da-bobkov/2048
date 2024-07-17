@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResultsTableForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,16 +39,17 @@
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.правилаИгрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resultsGridView = new System.Windows.Forms.DataGridView();
-            this.renewResultsButton = new System.Windows.Forms.Button();
             this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mapSizeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.renewResultsButton = new System.Windows.Forms.Button();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultsGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(247)))), ((int)(((byte)(238)))));
             this.menuStrip1.Location = new System.Drawing.Point(0, 24);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(316, 24);
@@ -56,6 +58,7 @@
             // 
             // menuStrip2
             // 
+            this.menuStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(247)))), ((int)(((byte)(238)))));
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.менюToolStripMenuItem,
             this.помощьToolStripMenuItem});
@@ -130,16 +133,6 @@
             this.resultsGridView.Size = new System.Drawing.Size(292, 331);
             this.resultsGridView.TabIndex = 9;
             // 
-            // renewResultsButton
-            // 
-            this.renewResultsButton.Location = new System.Drawing.Point(228, 23);
-            this.renewResultsButton.Name = "renewResultsButton";
-            this.renewResultsButton.Size = new System.Drawing.Size(75, 23);
-            this.renewResultsButton.TabIndex = 10;
-            this.renewResultsButton.Text = "Обновить";
-            this.renewResultsButton.UseVisualStyleBackColor = true;
-            this.renewResultsButton.Click += new System.EventHandler(this.renewResultsButton_Click);
-            // 
             // nameColumn
             // 
             this.nameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -161,16 +154,28 @@
             this.mapSizeColumn.Name = "mapSizeColumn";
             this.mapSizeColumn.Width = 84;
             // 
+            // renewResultsButton
+            // 
+            this.renewResultsButton.Location = new System.Drawing.Point(228, 23);
+            this.renewResultsButton.Name = "renewResultsButton";
+            this.renewResultsButton.Size = new System.Drawing.Size(75, 23);
+            this.renewResultsButton.TabIndex = 10;
+            this.renewResultsButton.Text = "Обновить";
+            this.renewResultsButton.UseVisualStyleBackColor = true;
+            this.renewResultsButton.Click += new System.EventHandler(this.renewResultsButton_Click);
+            // 
             // ResultsTableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(247)))), ((int)(((byte)(238)))));
             this.ClientSize = new System.Drawing.Size(316, 395);
             this.Controls.Add(this.renewResultsButton);
             this.Controls.Add(this.resultsGridView);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.menuStrip2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ResultsTableForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "2048";
