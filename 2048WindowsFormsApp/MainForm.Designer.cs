@@ -61,22 +61,22 @@
             // scoreNameLabel
             // 
             this.scoreNameLabel.AutoSize = true;
-            this.scoreNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.scoreNameLabel.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreNameLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.scoreNameLabel.Location = new System.Drawing.Point(1, 11);
+            this.scoreNameLabel.Location = new System.Drawing.Point(3, 11);
             this.scoreNameLabel.Name = "scoreNameLabel";
-            this.scoreNameLabel.Size = new System.Drawing.Size(73, 25);
+            this.scoreNameLabel.Size = new System.Drawing.Size(67, 23);
             this.scoreNameLabel.TabIndex = 0;
             this.scoreNameLabel.Text = "Score";
             // 
             // scoreLabel
             // 
             this.scoreLabel.AutoSize = true;
-            this.scoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.scoreLabel.Font = new System.Drawing.Font("Gill Sans MT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.scoreLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.scoreLabel.Location = new System.Drawing.Point(6, 36);
             this.scoreLabel.Name = "scoreLabel";
-            this.scoreLabel.Size = new System.Drawing.Size(24, 25);
+            this.scoreLabel.Size = new System.Drawing.Size(22, 27);
             this.scoreLabel.TabIndex = 1;
             this.scoreLabel.Text = "0";
             // 
@@ -202,11 +202,11 @@
             // bestScoreNameLabel
             // 
             this.bestScoreNameLabel.AutoSize = true;
-            this.bestScoreNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bestScoreNameLabel.Font = new System.Drawing.Font("Gill Sans Ultra Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bestScoreNameLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.bestScoreNameLabel.Location = new System.Drawing.Point(3, 11);
+            this.bestScoreNameLabel.Location = new System.Drawing.Point(4, 11);
             this.bestScoreNameLabel.Name = "bestScoreNameLabel";
-            this.bestScoreNameLabel.Size = new System.Drawing.Size(66, 25);
+            this.bestScoreNameLabel.Size = new System.Drawing.Size(59, 23);
             this.bestScoreNameLabel.TabIndex = 7;
             this.bestScoreNameLabel.Text = " Best";
             this.bestScoreNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -214,11 +214,11 @@
             // bestScoreLabel
             // 
             this.bestScoreLabel.AutoSize = true;
-            this.bestScoreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bestScoreLabel.Font = new System.Drawing.Font("Gill Sans MT", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bestScoreLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.bestScoreLabel.Location = new System.Drawing.Point(3, 36);
             this.bestScoreLabel.Name = "bestScoreLabel";
-            this.bestScoreLabel.Size = new System.Drawing.Size(24, 25);
+            this.bestScoreLabel.Size = new System.Drawing.Size(22, 27);
             this.bestScoreLabel.TabIndex = 8;
             this.bestScoreLabel.Text = "0";
             // 
