@@ -39,10 +39,11 @@
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.правилаИгрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resultsGridView = new System.Windows.Forms.DataGridView();
+            this.renewResultsButton = new System.Windows.Forms.Button();
             this.nameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mapSizeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.renewResultsButton = new System.Windows.Forms.Button();
+            this.winOrLoseColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultsGridView)).BeginInit();
             this.SuspendLayout();
@@ -127,32 +128,12 @@
             this.resultsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameColumn,
             this.resultColumn,
-            this.mapSizeColumn});
+            this.mapSizeColumn,
+            this.winOrLoseColumn});
             this.resultsGridView.Location = new System.Drawing.Point(12, 52);
             this.resultsGridView.Name = "resultsGridView";
             this.resultsGridView.Size = new System.Drawing.Size(292, 331);
             this.resultsGridView.TabIndex = 9;
-            // 
-            // nameColumn
-            // 
-            this.nameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.nameColumn.HeaderText = "Имя";
-            this.nameColumn.Name = "nameColumn";
-            this.nameColumn.Width = 54;
-            // 
-            // resultColumn
-            // 
-            this.resultColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.resultColumn.HeaderText = "Размер карты";
-            this.resultColumn.Name = "resultColumn";
-            this.resultColumn.Width = 97;
-            // 
-            // mapSizeColumn
-            // 
-            this.mapSizeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.mapSizeColumn.HeaderText = "Результат";
-            this.mapSizeColumn.Name = "mapSizeColumn";
-            this.mapSizeColumn.Width = 84;
             // 
             // renewResultsButton
             // 
@@ -163,6 +144,33 @@
             this.renewResultsButton.Text = "Обновить";
             this.renewResultsButton.UseVisualStyleBackColor = true;
             this.renewResultsButton.Click += new System.EventHandler(this.renewResultsButton_Click);
+            // 
+            // nameColumn
+            // 
+            this.nameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.nameColumn.HeaderText = "Имя";
+            this.nameColumn.Name = "nameColumn";
+            this.nameColumn.Width = 54;
+            // 
+            // resultColumn
+            // 
+            this.resultColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.resultColumn.HeaderText = "Размер карты";
+            this.resultColumn.Name = "resultColumn";
+            this.resultColumn.Width = 57;
+            // 
+            // mapSizeColumn
+            // 
+            this.mapSizeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.mapSizeColumn.HeaderText = "Очки";
+            this.mapSizeColumn.Name = "mapSizeColumn";
+            this.mapSizeColumn.Width = 57;
+            // 
+            // winOrLoseColumn
+            // 
+            this.winOrLoseColumn.HeaderText = "Результат";
+            this.winOrLoseColumn.Name = "winOrLoseColumn";
+            this.winOrLoseColumn.Width = 80;
             // 
             // ResultsTableForm
             // 
@@ -203,5 +211,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn resultColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn mapSizeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn winOrLoseColumn;
     }
 }

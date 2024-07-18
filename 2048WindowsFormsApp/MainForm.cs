@@ -202,6 +202,7 @@ namespace _2048WindowsFormsApp
             ShowScore();
             if (Win())
             {
+                user.Result = "Победа";
                 AddResult();
                 MessageBox.Show("Победа!");
                 return;
@@ -209,6 +210,7 @@ namespace _2048WindowsFormsApp
             GenerateNumber();
             if (GameOver())
             {
+                user.Result = "Поражение";
                 AddResult();
                 MessageBox.Show("Вы проиграли. Игра окончена.");
                 return;

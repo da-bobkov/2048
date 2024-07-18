@@ -11,6 +11,7 @@ namespace ClassLibrary
         public string Name { get; set; }
         public int Score { get; set; }
         public string choosenMapSize { get; set; }
+        public string Result { get; set; }
 
         public User(string name, string choosenmapsize)
         {
