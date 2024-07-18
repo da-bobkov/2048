@@ -155,7 +155,7 @@
             // resultColumn
             // 
             this.resultColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.resultColumn.HeaderText = "Размер карты";
+            this.resultColumn.HeaderText = "Карта";
             this.resultColumn.Name = "resultColumn";
             this.resultColumn.Width = 57;
             // 
