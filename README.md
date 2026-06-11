@@ -1,6 +1,6 @@
 # 2048 Game (Windows Forms / C#)
 
-[![NET Version](https://img.shields.io/badge/.NET-8.0-purple.svg)](https://dotnet.microsoft.com/)
+[![.NET Framework 4.7.2](https://img.shields.io/badge/.NET_Framework-4.7.2-blue)](https://dotnet.microsoft.com/)
 [![Language](https://img.shields.io/badge/Language-C%23-blue.svg)](https://learn.microsoft.com/en-us/dotnet/csharp/)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20Forms-green.svg)](https://learn.microsoft.com/en-us/dotnet/desktop/winforms/)
 
